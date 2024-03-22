@@ -1,0 +1,14 @@
+clc;
+clear;
+function [x]=Trap(x0 , xn , n , f)
+    h = (xn-x0)/n;
+     add = 0;
+     z0 = (f(x0));
+     zn = (f(xn));
+     for i = 1:n-1
+         x0 = x0 +h;
+         add = add+(2*f(x0));
+     end
+     x = (h/2)*(z0+zn+add);
+     
+     endfunction

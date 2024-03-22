@@ -1,0 +1,12 @@
+clc;
+clear;
+function y=NR(f)
+    x0=input("Enter the first root:")
+    f1=derivat(f);
+    for i=1:7
+        y=x0-(horner(f,x0)/horner(f1,x0));
+        x0=y;
+        disp(y);
+    end
+    endfunction
+    

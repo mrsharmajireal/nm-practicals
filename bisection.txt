@@ -1,0 +1,20 @@
+clc;
+clear;
+function [y]=Bisection(f)
+    a=input("Enter the first root:");
+    b=input("Enter the second root:");
+    n=input("Enter the number of iterations:");
+    while(horner(f,a)*horner(f,b)>0)
+        a=input("Enter the first root:");
+        b=input("Enter the second root:");
+    end
+    for i=l:n
+        y=(a+b)/2;
+        if((horner(f,a))*(horner(f,y))<0) then
+            b=y;
+        else
+            a=y;
+        end
+        disp(y);
+    end
+endfunction

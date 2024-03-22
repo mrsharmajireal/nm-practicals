@@ -1,0 +1,14 @@
+clc;
+clear;
+function [x]=secant(a,b,f)
+    N=100;
+    PE=10^-4;
+    for n=1:1:N
+        x=a-(a-b)*f(a)/f(a)-f(b);
+        if abs(f(x))<=PE then break;
+        else a=b;
+            b=x;
+            end
+        end
+    disp(n,"No. of iterations=")
+endfunction

@@ -1,0 +1,9 @@
+clc;
+clear;
+function[]=derivativ(f)
+    f1=derivativ(f)
+    f2=derivativ(f1)
+    disp(f1)
+    disp(f2)
+    endfunction
+ 
