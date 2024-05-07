@@ -1,0 +1,20 @@
+// Define the differential equation dy/dx = x^2 - y
+function dydx = myODE(x, y)
+    dydx = x^2 - y;
+endfunction
+
+// Define initial conditions
+x0 = 0;
+y0 = 1;
+
+// Define the range of x values
+x_range = 0:0.1:2;
+
+// Solve the differential equation
+y_solution = ode(y0, x0, x_range, myODE);
+
+// Plot the solution
+plot(x_range, y_solution);
+xlabel('x');
+ylabel('y');
+title('Solution of dy/dx = x^2 - y');
