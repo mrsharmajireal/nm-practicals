@@ -7,14 +7,32 @@ endfunction
 x0 = 0;
 y0 = 1;
 
-// Define the range of x values
-x_range = 0:0.1:2;
+// Define step size
+h = 0.1;
 
-// Solve the differential equation
-y_solution = ode(y0, x0, x_range, myODE);
+// Define the range of x values
+x_range = 0:h:2;
+
+// Initialize arrays to store x and y values
+x_values = [];
+y_values = [];
+
+// Initialize initial values
+x_values(1) = x0;
+y_values(1) = y0;
+
+// Implement Euler's method
+for i = 2:length(x_range)
+    x = x_values(i-1);
+    y = y_values(i-1);
+    dydx = myODE(x, y);
+    y_new = y + h * dydx;
+    x_values(i) = x + h;
+    y_values(i) = y_new;
+end
 
 // Plot the solution
-plot(x_range, y_solution);
+plot(x_values, y_values);
 xlabel('x');
 ylabel('y');
-title('Solution of dy/dx = x^2 - y');
+title('Solution of dy/dx = x^2 - y using Euler''s method');
