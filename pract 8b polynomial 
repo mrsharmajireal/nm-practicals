@@ -1,0 +1,21 @@
+// Sample data
+x = [1, 2, 3, 4, 5];
+y = [2.1, 3.9, 7.2, 9.8, 14.2];
+
+// Degree of the polynomial
+degree = 2;
+
+// Perform polynomial regression
+coefficients = polyfit(x, y, degree);
+
+// Generate the fitted polynomial
+x_fit = linspace(min(x), max(x), 100); // Generate x values for plotting
+y_fit = polyval(coefficients, x_fit); // Evaluate the polynomial at x_fit
+
+// Plot the original data and the fitted polynomial
+clf(); // Clear any existing figure
+plot(x, y, 'o', x_fit, y_fit);
+xlabel('x');
+ylabel('y');
+title('Polynomial Regression');
+legend('Original Data', sprintf('Polynomial Fit (degree %d)', degree), 'location', 'northwest');
