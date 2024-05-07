@@ -1,0 +1,15 @@
+// Define the coefficients matrix A and the constants vector b
+A = [2 3; 4 5];
+b = [10; 20];
+
+// Method 1: Using the backslash operator
+x_backslash = A \ b;
+
+// Method 2: Using the linsolve function
+x_linsolve = linsolve(A, b);
+
+disp('Solution using backslash operator:');
+disp(x_backslash);
+
+disp('Solution using linsolve function:');
+disp(x_linsolve);
