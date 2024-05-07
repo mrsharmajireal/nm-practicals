@@ -1,0 +1,47 @@
+// Define the differential equation dy/dx = x^2 - y
+function dydx = myODE(x, y)
+    dydx = x^2 - y;
+endfunction
+
+// Define initial conditions
+x0 = 0;
+y0 = 1;
+
+// Define step size
+h = 0.1;
+
+// Define the range of x values
+x_range = 0:h:2;
+
+// Initialize arrays to store x and y values
+x_values = [];
+y_values = [];
+
+// Initialize initial values
+x_values(1) = x0;
+y_values(1) = y0;
+
+// Implement the fourth-order Runge-Kutta method
+for i = 2:length(x_range)
+    x = x_values(i-1);
+    y = y_values(i-1);
+    
+    // Calculate slopes at different points
+    k1 = h * myODE(x, y);
+    k2 = h * myODE(x + h/2, y + k1/2);
+    k3 = h * myODE(x + h/2, y + k2/2);
+    k4 = h * myODE(x + h, y + k3);
+    
+    // Update y using the weighted average of slopes
+    y_new = y + (k1 + 2*k2 + 2*k3 + k4)/6;
+    
+    // Update x and store y
+    x_values(i) = x + h;
+    y_values(i) = y_new;
+end
+
+// Plot the solution
+plot(x_values, y_values);
+xlabel('x');
+ylabel('y');
+title('Solution of dy/dx = x^2 - y using the fourth-order Runge-Kutta method');
